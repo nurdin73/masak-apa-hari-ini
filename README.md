@@ -10,7 +10,7 @@ category | is a key category for detail recipe by category or article by categor
 slug | is a key for detail product |
 ## Endpoint
 ###### Base URL
-`https://scrapping-mahi.herokuapp.com/`
+`https://scrapping-mahi.herokuapp.com/api/v1`
 
 Endpoint | Usage | Params | Query | Example | 
 --- | --- | --- | --- | --- | 
