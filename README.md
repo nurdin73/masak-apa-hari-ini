@@ -1,4 +1,6 @@
-# WEB SCRAPING WEBSITE https://www.masakapahariini.com/
+# API https://www.masakapahariini.com/
+Food recipes, article and product api bahasa Indonesia 🇮🇩 build with Cheerio and express js 🌸
+
 ## Documentations
 Field | Description |
 --- | --- | 
@@ -26,8 +28,6 @@ Products | `/products` | - | `page: page of product` | - |
 Product News | `/products/new` | - | - | - | 
 Product Detail | `/product/:slug` | `slug: key of product` | - | `/product/jawara-cabai-tabur-jambal` | 
 Related Recipe By Product | `/product/:slug/related-recipe` | `slug: key of product` | - | `/product/jawara-cabai-tabur-jambal/related-recipe` | 
-
-
 
 ### Credits
 ###### Copyright &copy; 2021 Nurdin
