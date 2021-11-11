@@ -1,12 +1,14 @@
 require('dotenv').config()
 require('express-group-routes')
 const express = require('express')
+const cors = require('cors')
 
 const PORT = process.env.PORT || 3000
 
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 
 const RecipesController = require('./app/controllers/RecipesController')
 const ArticleController = require('./app/controllers/ArticlesController')
