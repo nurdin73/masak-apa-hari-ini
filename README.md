@@ -10,7 +10,11 @@ category | is a key category for detail recipe by category or article by categor
 slug | is a key for detail product |
 ## Endpoint
 ###### Base URL
-`https://scrapping-mahi.herokuapp.com/api/v1`
+````
+
+https://scrapping-mahi.herokuapp.com/api/v1
+
+````
 
 Endpoint | Usage | Params | Query | Example | 
 --- | --- | --- | --- | --- | 
@@ -26,6 +30,7 @@ Related Article | `/article/:category/:key/related` | `key: key article` `catego
 Articles By Tag | `/article/:tag` | `tag: key tag` | - | `/article/rendah-karbohidrat` | 
 Products | `/products` | - | `page: page of product` | - | 
 Product News | `/products/new` | - | - | - | 
+Product By Category | `/products/:category` | `category: key of category product` | - | - | 
 Product Detail | `/product/:slug` | `slug: key of product` | - | `/product/jawara-cabai-tabur-jambal` | 
 Related Recipe By Product | `/product/:slug/related-recipe` | `slug: key of product` | - | `/product/jawara-cabai-tabur-jambal/related-recipe` | 
 
