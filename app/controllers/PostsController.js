@@ -39,6 +39,9 @@ exports.search = async (req, res) => {
                 result.data.push(item)
             }
         })
+        if(result.data.length < 1) {
+            result.message = $('#search-no-results', html).find('h1').filter(i => i == 0).text().trim()
+        }
     }).catch(err => {
         res.status(404).json({
             message: err.message
