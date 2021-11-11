@@ -3,38 +3,41 @@ const cheerio = require('cheerio')
 const URL_SCRAPING = process.env.URL_SCRAPING || "https://www.masakapahariini.com/"
 
 exports.latest = async (req, res) => {
-    const key = req.params.key
+    const key = req.params.key || ""
     const latest = []
     await axios(URL_SCRAPING).then(response => {
         const html = response.data
         const $ = cheerio.load(html)
         $('.block-post-medium', html).each(function() {
             if($(this).attr('post-type') != undefined) {
-                if($(this).attr('post-type') == key) {
-                    const title = $(this).find('a').attr('data-tracking-value')
-                    const url = $(this).find('a').attr('href')
-                    const thumbnail = $(this).find('.wp-post-image').attr('data-lazy-src')
-                    const key = url.split('/')
-                    latest.push({
-                        title: title,
-                        category: key[3],
-                        slug: key[4],
-                        thumbnail: thumbnail,
-                        url: url,
-                    })
+                if(key != "") {
+                    if($(this).attr('post-type') == key) {
+                        console.log(key);
+                        const title = $(this).find('a').attr('data-tracking-value')
+                        const url = $(this).find('a').attr('href')
+                        const thumbnail = $(this).find('.wp-post-image').attr('data-lazy-src')
+                        const keys = url.split('/')
+                        latest.push({
+                            title: title,
+                            category: keys[3],
+                            slug: keys[4],
+                            thumbnail: thumbnail,
+                            url: url,
+                        })
+                    }
                 } else {
                     const title = $(this).find('a').attr('data-tracking-value')
                     const url = $(this).find('a').attr('href')
                     const thumbnail = $(this).find('.wp-post-image').attr('data-lazy-src')
-                    const key = url.split('/')
+                    const keys = url.split('/')
                     const item = {
                         title: title,
-                        category: key[3],
-                        slug: key[4],
+                        category: keys[3],
+                        slug: keys[4],
                         thumbnail: thumbnail,
                         url: url,
                     }
-                    if(key[3] == "resep") {
+                    if(keys[3] == "resep") {
                         const info = {
                             info: {
                                 times: $(this).find('.time small').text().trim(),
