@@ -8,6 +8,7 @@ key | is a unique key for detail article or recipe |
 type | is a type of posts. only article and recipe |
 category | is a key category for detail recipe by category or article by category |
 slug | is a key for detail product |
+query | is a key for search a post |
 ## Endpoint
 ###### Base URL
 ````
