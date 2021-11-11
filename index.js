@@ -13,6 +13,7 @@ const ArticleController = require('./app/controllers/ArticlesController')
 const CategoriesController = require('./app/controllers/CategoriesController')
 const ProductsController = require('./app/controllers/ProductsController')
 const PostsController = require('./app/controllers/PostsController')
+const BrandsController = require('./app/controllers/BrandsController')
 
 app.get('/', (req, res) => {
     res.json({
@@ -73,6 +74,9 @@ app.group('/api/v1', router => {
     // related recipe by product
     // slug = key product
     router.get('/product/:slug/related-recipe', ProductsController.relatedRecipes)
+
+    // brand
+    router.get('/brands', BrandsController.brands)
 })
 
 // app.get('/api/v1/recipes/featured', RecipesController.featuredRecipes)
