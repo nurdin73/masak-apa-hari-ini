@@ -24,7 +24,7 @@ Endpoint | Usage | Params | Query | Example |
 All Latest Post | `/latest` | - | - | - | 
 Search All Post | `/search/:query` | `query: key search value` | - | - | 
 Article or Recipe Latest Post | `/:key/latest` | `key : article or recipe` | - | `article/latest` | 
-Categories List Article Or Recipe | `/categories/:type` | `key: article or recipe` | - | `categories/recipe` | 
+Categories List Article Or Recipe | `/categories/:type` | `type: article or recipe` | - | `categories/recipe` | 
 Get Article Or Recipe By Category | `/category/:type/:category` | `type: article or recipe` `category: key category` | - | `category/recipe/resep-dessert` | 
 Recipe Featured | `/recipes/featured` | - | - | - | 
 Recipe Detail | `/recipe/:key` | `key: key recipe` | - | `recipe/resep-mie-shirataki-goreng` | 
