@@ -12,10 +12,11 @@ const RecipesController = require('./app/controllers/RecipesController')
 const ArticleController = require('./app/controllers/ArticlesController')
 const CategoriesController = require('./app/controllers/CategoriesController')
 const ProductsController = require('./app/controllers/ProductsController')
+const PostsController = require('./app/controllers/PostsController')
 
 app.get('/', (req, res) => {
     res.json({
-        title: "Welcome to My API",
+        title: "API Food Recipe, Article And Product",
         desc: "This API is scraping data from website https://www.masakapahariini.com/",
         documentation: "https://github.com/nurdin73/masak-apa-hari-ini"
     })
@@ -54,6 +55,9 @@ app.group('/api/v1', router => {
     
     // article by tag
     router.get('/article/:tag', ArticleController.tag)
+
+    // search post
+    router.get('/search/:query', PostsController.search)
 
     // products news
     router.get('/products/new', ProductsController.news)
