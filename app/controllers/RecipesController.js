@@ -27,14 +27,7 @@ exports.featuredRecipes = async (req, res) => {
             message: err.message
         })
     }) 
-}
-
-exports.categories = (req, res) => {
-    res.json('categories')
-}
-
-exports.category = (req, res) => {
-    res.json(req.params.category)
+    res.json(featured_receipes)
 }
 
 exports.recipe = async (req, res) => {
