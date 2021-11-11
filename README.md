@@ -35,6 +35,7 @@ Product News | `/products/new` | - | - | - |
 Product By Category | `/products/:category` | `category: key of category product` | - | - | 
 Product Detail | `/product/:slug` | `slug: key of product` | - | `/product/jawara-cabai-tabur-jambal` | 
 Related Recipe By Product | `/product/:slug/related-recipe` | `slug: key of product` | - | `/product/jawara-cabai-tabur-jambal/related-recipe` | 
+Brands | `/brands` | - | - | - | 
 
 ### Credits
 ###### Copyright &copy; 2021 Nurdin
