@@ -18,7 +18,8 @@ app.get('/', (req, res) => {
     res.json({
         title: "API Food Recipe, Article And Product",
         desc: "This API is scraping data from website https://www.masakapahariini.com/",
-        documentation: "https://github.com/nurdin73/masak-apa-hari-ini"
+        documentation: "https://github.com/nurdin73/masak-apa-hari-ini",
+        base_url: "https://scrapping-mahi.herokuapp.com/api/v1"
     })
 })
 app.group('/api/v1', router => {
