@@ -80,6 +80,40 @@ exports.products = async (req, res) => {
     res.json(product)
 }
 
+exports.productByCategory = async (req, res) => {
+    const urlCategory = `${URL_SCRAPING}produks/${req.params.category}`
+    const category = {}
+    await axios(urlCategory).then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        category.name = $('h1.title', html).text().trim()
+        const products = []
+        $('.block-product', html).each(function() {
+            const id = $(this).find('a').attr('data-product-id')
+            const title = $(this).find('a').attr('data-product-title')
+            const url = $(this).find('a').attr('href')
+            const key = url.split('/')
+            const category = $(this).find('a').attr('data-product-category')
+            const thumbnail = $(this).find('img').attr('data-lazy-src')
+            products.push({
+                id: id,
+                slug : key[key.length - 2],
+                title: title,
+                category: category,
+                thumbnail: thumbnail,
+                url: url,
+            })
+        })
+        category.data = products
+        
+    }).catch(err => {
+        res.status(404).json({
+            message: err.message
+        })
+    }) 
+    res.json(category)
+}
+
 exports.product = async (req, res) => {
     const slug = req.params.slug
     const url = `${URL_SCRAPING}produk/${slug}`

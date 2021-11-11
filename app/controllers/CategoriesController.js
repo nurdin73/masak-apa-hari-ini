@@ -35,6 +35,18 @@ exports.categories = async (req, res) => {
                     key: key[key.length - 2]
                 })
             })
+        } else if(type == "product") {
+            $('#menu-item-288 ul li', html).each(function() {
+                const attr = $(this).find('a')
+                const title = attr.text()
+                const url = attr.attr('href')
+                const key = url.split('/')
+                categories.push({
+                    title: title,
+                    url: url,
+                    key: key[key.length - 2]
+                })
+            })
         }
     }).catch(err => {
         res.status(404).json({

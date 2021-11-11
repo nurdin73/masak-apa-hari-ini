@@ -16,7 +16,8 @@ const ProductsController = require('./app/controllers/ProductsController')
 app.get('/', (req, res) => {
     res.json({
         title: "Welcome to My API",
-        desc: "This API is scraping data from website https://www.masakapahariini.com/"
+        desc: "This API is scraping data from website https://www.masakapahariini.com/",
+        documentation: "https://github.com/nurdin73/masak-apa-hari-ini"
     })
 })
 app.group('/api/v1', router => {
@@ -58,6 +59,9 @@ app.group('/api/v1', router => {
     router.get('/products/new', ProductsController.news)
     // products lists
     router.get('/products', ProductsController.products)
+    // product by category
+    // category = key category product
+    router.get('/products/:category', ProductsController.productByCategory)
     // product detail
     // slug = key product
     router.get('/product/:slug', ProductsController.product)
