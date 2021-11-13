@@ -75,10 +75,9 @@ exports.category = async (req, res) => {
                 const url = $(this).find('a').attr('href')
                 const thumbnail = $(this).find('.wp-post-image').attr('data-lazy-src')
                 const keys = url.split('/')
-                console.log(keys);
                 const item = {
                     title: title,
-                    category: keys[3],
+                    category: category,
                     slug: keys[4],
                     thumbnail: thumbnail,
                     url: url,
