@@ -50,7 +50,9 @@ exports.recipe = async (req, res) => {
         })
         recipe.breadcrumb = []
         $('.breadcrumb-item', html).each(function() {
-            recipe.breadcrumb.push($(this).text().trim())
+            recipe.breadcrumb.push({
+                title: $(this).text().trim()
+            })
         })
 
         $('.difficulty small', html).each(function(i) {
