@@ -74,13 +74,26 @@ exports.category = async (req, res) => {
                 const title = $(this).find('a').attr('data-tracking-value')
                 const url = $(this).find('a').attr('href')
                 const thumbnail = $(this).find('.wp-post-image').attr('data-lazy-src')
-                const key = url.split('/')
-                posts.push({
+                const keys = url.split('/')
+                console.log(keys);
+                const item = {
                     title: title,
-                    slug: key[4],
+                    category: keys[3],
+                    slug: keys[4],
                     thumbnail: thumbnail,
                     url: url,
-                })
+                }
+                if(keys[3] == "resep") {
+                    const info = {
+                        info: {
+                            times: $(this).find('.time small').text().trim(),
+                            servings: $(this).find('.servings small').text().trim(),
+                            difficulty: $(this).find('.difficulty small').text().trim()
+                        }
+                    }
+                    Object.assign(item, info)
+                }
+                posts.push(item)
             }
         })
         
