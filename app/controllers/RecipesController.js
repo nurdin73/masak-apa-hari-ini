@@ -48,6 +48,10 @@ exports.recipe = async (req, res) => {
                 recipe.times = $(this).text().trim()
             }
         })
+        recipe.breadcrumb = []
+        $('.breadcrumb-item', html).each(function() {
+            recipe.breadcrumb.push($(this).text().trim())
+        })
 
         $('.difficulty small', html).each(function(i) {
             if(i == 0) {
