@@ -69,6 +69,7 @@ exports.recipe = async (req, res) => {
         recipe.ingredients = []
         recipe.steps = []
         recipe.description = $('.the-content', html).html().trim()
+        recipe.tags = []
         $('#ingredients-section .needed-products div div .needed-product', html).each(function (i) {  
             const name = $(this).find('span').text().trim()
             const image = $(this).find('img').attr('data-lazy-src')
@@ -88,6 +89,16 @@ exports.recipe = async (req, res) => {
             recipe.steps.push({
                 number: $(this).find('.step-number').text().trim(),
                 desc: $(this).find('.step-description').html().trim()
+            })
+        })
+
+        $('.tag', html).each(function () {  
+            const url = $(this).attr('href')
+            const keys = url.split('/')
+            recipe.tags.push({
+                key: keys[keys.length - 2],
+                name: $(this).attr('data-tracking-value'),
+                url: url
             })
         })
     }).catch(err => {
