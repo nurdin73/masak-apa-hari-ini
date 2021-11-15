@@ -60,8 +60,8 @@ app.group('/api/v1', router => {
     // category = key category
     router.get('/article/:category/:key/related', ArticleController.related)
     
-    // article by tag
-    router.get('/article/:tag', ArticleController.tag)
+    // post by tag
+    router.get('/posts/:tag', PostsController.tag)
 
     // search post
     router.get('/search/:query', PostsController.search)

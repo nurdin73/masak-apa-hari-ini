@@ -49,3 +49,49 @@ exports.search = async (req, res) => {
     }) 
     res.json(result)
 }
+
+exports.tag = async (req, res) => {
+    const page = req.query.page || 1
+    const perpage = 10
+    const result = {}
+    result.page = parseInt(page)
+    result.perpage = perpage
+    const urlToGetTermAndTotal = `${URL_SCRAPING}/tag-global/${req.params.tag}`
+    const urlGetAJaxLoad = `${URL_SCRAPING}/ajax`
+    await axios(urlToGetTermAndTotal).then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        result.termId = parseInt($('#category-content', html).attr('data-term-id'))
+        result.total = parseInt($('.category-posts', html).attr('data-total-posts'))
+    })
+    await axios.post(`${urlGetAJaxLoad}`, {
+        "load_more":true,
+        "post_type":["post", "recipe"],
+        "posts_per_page":perpage,
+        "page": page,
+        "taxonomy":"global_tag",
+        "term_id":result.termId,
+    }).then(res => {
+        const html = res.data
+        const $ = cheerio.load(html)
+        result.data = []
+        $('.block-post').each(function() {
+            const url = $(this).find('a').attr('href')
+            const keys = url.split('/') 
+            const item = {
+                title: $(this).find('a').attr('data-tracking-value') ,
+                category: keys[3],
+                slug: keys[4],
+                thumbnail: $(this).find('.wp-post-image').attr('data-lazy-src') ,
+                url: url,
+            }
+            result.data.push(item)
+        })
+    }).catch(err => {
+        res.status(404).json({
+            message: err.message
+        })
+    })
+
+    res.json(result)
+}
