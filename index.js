@@ -40,6 +40,8 @@ app.group('/api/v1', router => {
     // category = key category
     router.get('/category/:type/:category', CategoriesController.category)
     
+    // get all recipes
+    router.get('/recipes', RecipesController.recipes)
     // get featured recipes
     router.get('/recipes/featured', RecipesController.featuredRecipes)
     // get detail recipe
@@ -49,7 +51,8 @@ app.group('/api/v1', router => {
     // key = key recipe
     router.get('/recipe/:key/related', RecipesController.related)
 
-    // article
+    // articles
+    router.get('/articles', ArticleController.articles)
     // key = key article
     // category = key category
     router.get('/article/:category/:key', ArticleController.article)

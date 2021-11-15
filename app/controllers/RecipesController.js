@@ -110,6 +110,49 @@ exports.recipe = async (req, res) => {
     res.json(recipe)
 }
 
+exports.recipes = async (req, res) => {
+    const page = req.query.page || 1
+    const perpage = 10
+    const result = {}
+    result.page = parseInt(page)
+    result.perpage = perpage
+    const urlGetTotalRecipe = `${URL_SCRAPING}/resep-masakan`
+    const urlGetAJaxLoad = `${URL_SCRAPING}/ajax`
+    await axios(urlGetTotalRecipe).then(response => {
+        const html = response.data
+        const $ = cheerio.load(html)
+        result.total = parseInt($('.category-posts', html).attr('data-total-posts'))
+    })
+    await axios.post(`${urlGetAJaxLoad}`, {
+        "load_more":true,
+        "post_type":["recipe"],
+        "posts_per_page":perpage,
+        "page": page
+    }).then(res => {
+        const html = res.data
+        const $ = cheerio.load(html)
+        result.data = []
+        $('.block-post').each(function() {
+            const url = $(this).find('a').attr('href')
+            const keys = url.split('/') 
+            const item = {
+                title: $(this).find('a').attr('data-tracking-value') ,
+                category: keys[3],
+                slug: keys[4],
+                thumbnail: $(this).find('.wp-post-image').attr('data-lazy-src') ,
+                url: url,
+            }
+            result.data.push(item)
+        })
+    }).catch(err => {
+        res.status(404).json({
+            message: err.message
+        })
+    })
+
+    res.json(result)
+}
+
 exports.related = async (req, res) => {
     const related_posts = []
     const urlDetail = `${URL_SCRAPING}resep/${req.params.key}`
