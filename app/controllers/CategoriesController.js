@@ -106,7 +106,7 @@ exports.category = async (req, res) => {
         detailCategory.post = posts
     }).catch(err => {
         res.status(404).json({
-            message: err.message,
+            message: err.message
         })
     }) 
     res.json(detailCategory)

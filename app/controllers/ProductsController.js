@@ -25,7 +25,7 @@ exports.news = async (req, res) => {
         })
     }).catch(err => {
         res.status(404).json({
-            message: err.message,
+            message: err.message
         })
     }) 
     res.json(products)
@@ -74,7 +74,7 @@ exports.products = async (req, res) => {
         
     }).catch(err => {
         res.status(404).json({
-            message: err.message,
+            message: err.message
         })
     }) 
     res.json(product)
@@ -108,7 +108,7 @@ exports.productByCategory = async (req, res) => {
         
     }).catch(err => {
         res.status(404).json({
-            message: err.message,
+            message: err.message
         })
     }) 
     res.json(category)
@@ -155,7 +155,7 @@ exports.relatedRecipes = async (req, res) => {
         })
     }).catch(err => {
         res.status(404).json({
-            message: err.message,
+            message: err.message
         })
     }) 
     if(recipes.length > 0) {
