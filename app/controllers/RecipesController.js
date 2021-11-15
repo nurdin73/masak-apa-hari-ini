@@ -142,6 +142,16 @@ exports.recipes = async (req, res) => {
                 thumbnail: $(this).find('.wp-post-image').attr('data-lazy-src') ,
                 url: url,
             }
+            if(keys[3] == "resep") {
+                const info = {
+                    info: {
+                        times: $(this).find('.time small').text().trim(),
+                        servings: $(this).find('.servings small').text().trim(),
+                        difficulty: $(this).find('.difficulty small').text().trim()
+                    }
+                }
+                Object.assign(item, info)
+            }
             result.data.push(item)
         })
     }).catch(err => {
