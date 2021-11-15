@@ -25,7 +25,6 @@ exports.featuredRecipes = async (req, res) => {
     }).catch(err => {
         res.status(404).json({
             message: err.message,
-            status: err.status
         })
     }) 
     res.json(featured_receipes)
@@ -105,7 +104,6 @@ exports.recipe = async (req, res) => {
     }).catch(err => {
         res.status(404).json({
             message: err.message,
-            status: err.status
         })
     }) 
 
@@ -136,7 +134,6 @@ exports.related = async (req, res) => {
     }).catch(err => {
         res.status(404).json({
             message: err.message,
-            status: err.status
         })
     }) 
 

@@ -54,7 +54,6 @@ exports.latest = async (req, res) => {
     }).catch(err => {
         res.status(404).json({
             message: err.message,
-            status: err.status
         })
     }) 
 
@@ -91,7 +90,6 @@ exports.article = async (req, res) => {
     }).catch(err => {
         res.status(404).json({
             message: err.message,
-            status: err.status
         })
     }) 
     res.json(article)
@@ -122,7 +120,6 @@ exports.related = async (req, res) => {
     }).catch(err => {
         res.status(404).json({
             message: err.message,
-            status: err.status
         })
     }) 
     res.json(related)
@@ -167,7 +164,6 @@ exports.tag = async (req, res) => {
     }).catch(err => {
         res.status(404).json({
             message: err.message,
-            status: err.status
         })
     }) 
     res.json(detailTag)
