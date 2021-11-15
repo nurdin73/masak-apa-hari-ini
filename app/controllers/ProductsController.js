@@ -19,7 +19,11 @@ exports.news = async (req, res) => {
                 id: id,
                 slug : key[key.length - 2],
                 title: title,
-                category: slugify(category, '-'),
+                category: slugify(category, {
+                    replacement: '-',
+                    lower: true,
+                    strict: true
+                }),
                 thumbnail: thumbnail,
                 url: url,
             })
@@ -59,7 +63,11 @@ exports.products = async (req, res) => {
                 id: id,
                 slug : key[key.length - 2],
                 title: title,
-                category: slugify(category, '-'),
+                category: slugify(category, {
+                    replacement: '-',
+                    lower: true,
+                    strict: true
+                }),
                 thumbnail: thumbnail,
                 url: url,
             })
@@ -100,7 +108,11 @@ exports.productByCategory = async (req, res) => {
                 id: id,
                 slug : key[key.length - 2],
                 title: title,
-                category: slugify(category, '-'),
+                category: slugify(category, {
+                    replacement: '-',
+                    lower: true,
+                    strict: true
+                }),
                 thumbnail: thumbnail,
                 url: url,
             })
