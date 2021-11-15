@@ -1,5 +1,6 @@
 const axios = require('axios')
 const cheerio = require('cheerio')
+const { default: slugify } = require('slugify')
 const URL_SCRAPING = process.env.URL_SCRAPING || "https://www.masakapahariini.com/"
 
 exports.news = async (req, res) => {
@@ -18,7 +19,7 @@ exports.news = async (req, res) => {
                 id: id,
                 slug : key[key.length - 2],
                 title: title,
-                category: category,
+                category: slugify(category, '-'),
                 thumbnail: thumbnail,
                 url: url,
             })
@@ -58,7 +59,7 @@ exports.products = async (req, res) => {
                 id: id,
                 slug : key[key.length - 2],
                 title: title,
-                category: category,
+                category: slugify(category, '-'),
                 thumbnail: thumbnail,
                 url: url,
             })
@@ -99,7 +100,7 @@ exports.productByCategory = async (req, res) => {
                 id: id,
                 slug : key[key.length - 2],
                 title: title,
-                category: category,
+                category: slugify(category, '-'),
                 thumbnail: thumbnail,
                 url: url,
             })
