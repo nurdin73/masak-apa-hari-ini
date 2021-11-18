@@ -26,12 +26,14 @@ Search All Post | `/search/:query` | `query: key search value` | - | - |
 Article or Recipe Latest Post | `/:key/latest` | `key : article or recipe` | - | `article/latest` | 
 Categories List Article Or Recipe | `/categories/:type` | `type: article or recipe` | - | `categories/recipe` | 
 Get Article Or Recipe By Category | `/category/:type/:category` | `type: article or recipe` `category: key category` | - | `category/recipe/resep-dessert` | 
+All Recipes | `/recipes` | - | `page: page of recipe` | - | 
 Recipe Featured | `/recipes/featured` | - | - | - | 
 Recipe Detail | `/recipe/:key` | `key: key recipe` | - | `recipe/resep-mie-shirataki-goreng` | 
 Recipe Related | `/recipe/:key/related` | `key: key recipe` | - | `recipe/resep-mie-shirataki-goreng/related` | 
+All Recipes | `/articles` | - | `page: page of article` | - |
 Article Detail | `/article/:category/:key` | `key: key article` `category: key category` | - | `/article/makanan-gaya-hidup/cara-mudah-gaya-hidup-sehat` | 
 Related Article | `/article/:category/:key/related` | `key: key article` `category: key category` | - | `/article/makanan-gaya-hidup/cara-mudah-gaya-hidup-sehat/related` | 
-Articles By Tag | `/article/:tag` | `tag: key tag` | - | `/article/rendah-karbohidrat` | 
+Posts By Tag | `/posts/:tag` | `tag: key tag` | - | `/article/rendah-karbohidrat` | 
 Products | `/products` | - | `page: page of product` | - | 
 Product News | `/products/new` | - | - | - | 
 Product By Category | `/products/:category` | `category: key of category product` | - | - | 
